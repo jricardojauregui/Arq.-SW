@@ -15,9 +15,13 @@ Descripción del funcionamiento del programa:
 descripcionCorta1
 */
 
-#include "iostream"
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+using namespace std;
 
 int main(){
+    
 
     return 0;
 }
