@@ -1,5 +1,5 @@
 /*
-Programa                  Main
+Programa                  Proyecto Final - Empresa
 Nom. materia              Arquitectura de Software
 Nom. prof.                Dr. Felipe de Jesús Rdz.
 Fecha creac.              22/04/25
@@ -21,29 +21,44 @@ descripcionCorta1
 
 using namespace std;
 
+/*
+Contenido               Propósito
+---------------------------------------------------------------
+leeMovimiento()         Leer datos de movimiento de un archivo        
+leePersonal()           Leer datos de personal de un archivo
+alta()                  Dar de alta a un empleado
+cambio()                Cambiar datos de un empleado
+baja()                  Dar de baja a un empleado
+copia()                 Copiar datos de un empleado
+movimientoPersonal()    Switch dependiendo de la opción elegida de los movimientos
+termina()               Terminar el programa
+main()                  Implementar funciones existentes
+*/
 
-
-void LeeMovimiento(){
+/*
+Objetivo leeMovimiento(): Leer los tipos de movimiento que se pueden realizar dado un archivo
+*/
+void leeMovimiento(){
 
 }
 
-void LeePersonal(){
+void leePersonal(){
 
 }
 
-void Alta(){
+void alta(){
     
 }
 
-void Cambio(){}
+void cambio(){}
 
-void Baja(){}
+void baja(){}
 
-void Copia(){}
+void copia(){}
 
-void MovimientoPersonal(){}
+void movimientoPersonal(){}
 
-void Termina(){}
+void termina(){}
 
 int main(){
     
