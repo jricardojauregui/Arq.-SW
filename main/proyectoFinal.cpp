@@ -1,5 +1,5 @@
 /*
-Programa                  proyectoFinal
+Programa                  Main
 Nom. materia              Arquitectura de Software
 Nom. prof.                Dr. Felipe de Jesús Rdz.
 Fecha creac.              22/04/25
@@ -18,9 +18,32 @@ descripcionCorta1
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+
 using namespace std;
 
 
+
+void LeeMovimiento(){
+
+}
+
+void LeePersonal(){
+
+}
+
+void Alta(){
+    
+}
+
+void Cambio(){}
+
+void Baja(){}
+
+void Copia(){}
+
+void MovimientoPersonal(){}
+
+void Termina(){}
 
 int main(){
     
