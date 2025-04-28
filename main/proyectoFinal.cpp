@@ -37,10 +37,6 @@ termina()               Terminar el programa
 main()                  Implementar funciones existentes
 */
 
-/*
-Objetivo leeMovimiento(): Leer los tipos de movimiento que se pueden realizar dado un archivo
-*/
-
 struct Personal {
     string TRAB, GPO, EMP, PTA, DEPTO, NOMB;
     char CLAVE;
@@ -76,6 +72,10 @@ string leerCampo(ISS &ss) {
     getline(ss, f, ',');
     return f;
 }
+
+/*
+Objetivo leeMovimiento(): Leer los tipos de movimiento que se pueden realizar dado un archivo
+*/
 
 void leeMovimiento(){
 
