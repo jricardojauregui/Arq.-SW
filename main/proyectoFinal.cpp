@@ -91,73 +91,80 @@ Objetivo leeMovimiento(): Leer los tipos de movimiento que se pueden realizar da
 */
 
 void leeMovimiento(){
-       string linea;
-       if (getline(finMov, linea)) {
-              ISS ss(linea);
-              mov.CVE = leerCampo(ss)[0];
-              mov.TRAB = leerCampo(ss);
-              mov.GPO = leerCampo(ss);
-              mov.EMP = leerCampo(ss);
-              mov.PTA = leerCampo(ss);
-              mov.DEPTO = leerCampo(ss);
-              mov.CLAVE = leerCampo(ss)[0];
-              mov.NOMB = leerCampo(ss);
-              mov.SAL = stod(leerCampo(ss));
-              mov.F_ING = stoi(leerCampo(ss));
-              eofMov = false;
-       } else {
-              eofMov = true;
-       }
+    string linea;
+    if (getline(finMov, linea)) 
+    {
+        ISS ss(linea);
+        mov.CVE = leerCampo(ss)[0];
+        mov.TRAB = leerCampo(ss);
+        mov.GPO = leerCampo(ss);
+        mov.EMP = leerCampo(ss);
+        mov.PTA = leerCampo(ss);
+        mov.DEPTO = leerCampo(ss);
+        mov.CLAVE = leerCampo(ss)[0];
+        mov.NOMB = leerCampo(ss);
+        mov.SAL = stod(leerCampo(ss));
+        mov.F_ING = stoi(leerCampo(ss));
+        eofMov = false;
+    } else {
+        eofMov = true;
+    }
 }
 
 void leePersonal(){
-       string linea;
-       if (getline(finPers, linea)) {
-              ISS ss(linea);
-              per.TRAB = leerCampo(ss);
-              per.GPO = leerCampo(ss);
-              per.EMP = leerCampo(ss);
-              per.PTA = leerCampo(ss);
-              per.DEPTO = leerCampo(ss);
-              per.CLAVE = leerCampo(ss)[0];
-              per.NOMB = leerCampo(ss);
-              per.SAL = stod(leerCampo(ss));
-              per.F_ING = stoi(leerCampo(ss));
-              eofPers = false;
-       } else {
-              eofPers = true;
-       }
+    string linea;
+    if (getline(finPers, linea)) 
+    {
+        ISS ss(linea);
+        per.TRAB = leerCampo(ss);
+        per.GPO = leerCampo(ss);
+        per.EMP = leerCampo(ss);
+        per.PTA = leerCampo(ss);
+        per.DEPTO = leerCampo(ss);
+        per.CLAVE = leerCampo(ss)[0];
+        per.NOMB = leerCampo(ss);
+        per.SAL = stod(leerCampo(ss));
+        per.F_ING = stoi(leerCampo(ss));
+        eofPers = false;
+    } else {
+        eofPers = true;
+    }
 }
 
 void alta() {
     Personal np;
     np.TRAB = mov.TRAB;
 
-    if (!mov.GPO.empty()) {
+    if (!mov.GPO.empty()) 
+    {
         np.GPO = mov.GPO;
     } else {
         np.GPO = "G000";
     }
 
-    if (!mov.EMP.empty()) {
+    if (!mov.EMP.empty()) 
+    {
         np.EMP = mov.EMP;
     } else {
         np.EMP = "E000";
     }
 
-    if (!mov.PTA.empty()) {
+    if (!mov.PTA.empty()) 
+    {
         np.PTA = mov.PTA;
     } else {
         np.PTA = "P000";
     }
 
-    if (!mov.DEPTO.empty()) {
+    if (!mov.DEPTO.empty()) 
+    {
         np.DEPTO = mov.DEPTO;
     } else {
         np.DEPTO = "D000";
     }
 
-    if (mov.CLAVE != 'O') {
+    if (mov.CLAVE != 'O') 
+    {
         np.CLAVE = mov.CLAVE;
     } else {
         np.CLAVE = 'O';
@@ -169,13 +176,15 @@ void alta() {
         np.NOMB = "N000";
     }
 
-    if (mov.SAL != 0.0) {
+    if (mov.SAL != 0.0) 
+    {
         np.SAL = mov.SAL;
     } else {
         np.SAL = 1000.0;
     }
 
-    if (mov.F_ING != 0) {
+    if (mov.F_ING != 0) 
+    {
         np.F_ING = mov.F_ING;
     } else {
         time_t ahora = time(0);
@@ -190,28 +199,36 @@ void alta() {
 
 
 void cambio(){
-    if (!mov.GPO.empty()) {
+    if (!mov.GPO.empty()) 
+    {
         per.GPO = mov.GPO;
     }
-    if (!mov.EMP.empty()) {
+    if (!mov.EMP.empty()) 
+    {
         per.EMP = mov.EMP;
     }
-    if (!mov.PTA.empty()) {
+    if (!mov.PTA.empty()) 
+    {
         per.PTA = mov.PTA;
     }
-    if (!mov.DEPTO.empty()) {
+    if (!mov.DEPTO.empty()) 
+    {
         per.DEPTO = mov.DEPTO;
     }
-    if (mov.CLAVE != 'O') { // Asumo que 'O' es como "sin cambio"
+    if (mov.CLAVE != 'O') 
+    { 
         per.CLAVE = mov.CLAVE;
     }
-    if (!mov.NOMB.empty()) {
+    if (!mov.NOMB.empty()) 
+    {
         per.NOMB = mov.NOMB;
     }
-    if (mov.SAL != 0.0) {
+    if (mov.SAL != 0.0) 
+    {
         per.SAL = mov.SAL;
     }
-    if (mov.F_ING != 0) {
+    if (mov.F_ING != 0) 
+    {
         per.F_ING = mov.F_ING;
     }
 
@@ -231,13 +248,20 @@ void copia() {
 
 
 void movimientoPersonal(){
-       switch(mov.CVE) {
-       case 'A': alta(); break;
-       case 'B': baja(); break;
-       case 'C': cambio(); break;
-       default: 
-              foutReporte << "MOVIMIENTO INVALIDO: " << mov.TRAB << '\n';
-              break;
+    switch(mov.CVE) 
+    {
+    case 'A': 
+        alta();
+        break;
+    case 'B': 
+        baja(); 
+        break;
+    case 'C': 
+        cambio(); 
+        break;
+    default: 
+        foutReporte << "MOVIMIENTO INVALIDO: " << mov.TRAB << '\n';
+        break;
     }
 }
 
@@ -254,8 +278,10 @@ int main(){
     leePersonal();
 
     while (!eofMov || !eofPers) {
-        if (!eofMov && !eofPers) {
-            if (mov.TRAB == per.TRAB) {
+        if (!eofMov && !eofPers) 
+        {
+            if (mov.TRAB == per.TRAB) 
+            {
                 movimientoPersonal();
                 leeMovimiento();
                 leePersonal();
