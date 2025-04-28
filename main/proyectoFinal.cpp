@@ -3,7 +3,7 @@ Programa                  Proyecto Final - Empresa
 Nom. materia              Arquitectura de Software
 Nom. prof.                Dr. Felipe de Jesús Rdz.
 Fecha creac.              22/04/25
-Fecha ult. mod.           99/99/99
+Fecha ult. mod.           28/04/25
 
 Bitacora. de mant.
 Nom: Santiago López       Fech. Mod.: 04/27/25       Desc: descripcionMod 
