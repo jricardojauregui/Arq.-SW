@@ -225,7 +225,10 @@ void baja(){
     // No se escribe en nuevo personal (equivale a baja)
 }
 
-void copia(){}
+void copia() {
+    foutNewPers << per.TRAB << ',' << per.GPO << ',' << per.EMP << ',' << per.PTA << ',' << per.DEPTO << ',' << per.CLAVE << ',' << per.NOMB << ',' << fixed << setprecision(4) << per.SAL << ',' << per.F_ING << '\n';
+}
+
 
 void movimientoPersonal(){
        switch(mov.CVE) {
