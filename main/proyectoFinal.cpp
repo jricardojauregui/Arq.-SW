@@ -6,7 +6,7 @@ Fecha creac.              22/04/25
 Fecha ult. mod.           99/99/99
 
 Bitacora. de mant.
-Nom: Santiago López       Fech. Mod.: 99/99/99       Desc: descripcionMod 
+Nom: Santiago López       Fech. Mod.: 4/27/25        Desc: descripcionMod 
 Nom: Ricardo Jáuregui     Fech. Mod.: 99/99/99       Desc: descripcionMod 
 Nom: Paola Loredo         Fech. Mod.: 99/99/99       Desc: descripcionMod 
 Nom: Fabían Orta          Fech. Mod.: 99/99/99       Desc: descripcionMod 
@@ -91,11 +91,42 @@ Objetivo leeMovimiento(): Leer los tipos de movimiento que se pueden realizar da
 */
 
 void leeMovimiento(){
-
+       string linea;
+       if (getline(finMov, linea)) {
+              ISS ss(linea);
+              mov.CVE = leerCampo(ss)[0];
+              mov.TRAB = leerCampo(ss);
+              mov.GPO = leerCampo(ss);
+              mov.EMP = leerCampo(ss);
+              mov.PTA = leerCampo(ss);
+              mov.DEPTO = leerCampo(ss);
+              mov.CLAVE = leerCampo(ss)[0];
+              mov.NOMB = leerCampo(ss);
+              mov.SAL = stod(leerCampo(ss));
+              mov.F_ING = stoi(leerCampo(ss));
+              eofMov = false;
+       } else {
+              eofMov = true;
+       }
 }
 
 void leePersonal(){
-
+       string linea;
+       if (getline(finPers, linea)) {
+              ISS ss(linea);
+              per.TRAB = leerCampo(ss);
+              per.GPO = leerCampo(ss);
+              per.EMP = leerCampo(ss);
+              per.PTA = leerCampo(ss);
+              per.DEPTO = leerCampo(ss);
+              per.CLAVE = leerCampo(ss)[0];
+              per.NOMB = leerCampo(ss);
+              per.SAL = stod(leerCampo(ss));
+              per.F_ING = stoi(leerCampo(ss));
+              eofPers = false;
+       } else {
+              eofPers = true;
+       }
 }
 
 void alta() {
@@ -189,16 +220,62 @@ void cambio(){
        
 }
 
-void baja(){}
+void baja(){
+       foutReporte << mov.TRAB << " BAJA EXITOSA\n";
+    // No se escribe en nuevo personal (equivale a baja)
+}
 
 void copia(){}
 
-void movimientoPersonal(){}
+void movimientoPersonal(){
+       switch(mov.CVE) {
+       case 'A': alta(); break;
+       case 'B': baja(); break;
+       case 'C': cambio(); break;
+       default: 
+              foutReporte << "MOVIMIENTO INVALIDO: " << mov.TRAB << '\n';
+              break;
+    }
+}
 
-void termina(){}
+void termina(){
+    finPers.close();
+    finMov.close();
+    foutNewPers.close();
+    foutReporte.close();
+}
 
 int main(){
-    
+    abreArchivos();
+    leeMovimiento();
+    leePersonal();
 
+    while (!eofMov || !eofPers) {
+        if (!eofMov && !eofPers) {
+            if (mov.TRAB == per.TRAB) {
+                movimientoPersonal();
+                leeMovimiento();
+                leePersonal();
+            } 
+            else if (mov.TRAB < per.TRAB) {
+                alta();
+                leeMovimiento();
+            } 
+            else {
+                copia();
+                leePersonal();
+            }
+        } 
+        else if (!eofMov) {
+            alta();
+            leeMovimiento();
+        } 
+        else {
+            copia();
+            leePersonal();
+        }
+    }
+
+    termina();
     return 0;
 }
