@@ -6,8 +6,8 @@ Fecha creac.              22/04/25
 Fecha ult. mod.           99/99/99
 
 Bitacora. de mant.
-Nom: Santiago López       Fech. Mod.: 4/27/25        Desc: descripcionMod 
-Nom: Ricardo Jáuregui     Fech. Mod.: 99/99/99       Desc: descripcionMod 
+Nom: Santiago López       Fech. Mod.: 04/27/25       Desc: descripcionMod 
+Nom: Ricardo Jáuregui     Fech. Mod.: 04/28/25       Desc: descripcionMod 
 Nom: Paola Loredo         Fech. Mod.: 99/99/99       Desc: descripcionMod 
 Nom: Fabían Orta          Fech. Mod.: 99/99/99       Desc: descripcionMod 
        
