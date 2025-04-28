@@ -183,8 +183,8 @@ void alta() {
             np.F_ING = mov.F_ING;
         } else {
             time_t t = time(nullptr);
-            tm* lt = localtime(&t);
-            np.F_ING = (1900 + lt->tm_year) * 10000 + (1 + lt->tm_mon) * 100 + lt->tm_mday;
+            tm* tl = localtime(&t);
+            np.F_ING = (1900 + tl->tm_year) * 10000 + (1 + tl->tm_mon) * 100 + tl->tm_mday;
         }
         archNuevoPer << np.TRAB << ',' << np.GPO << ',' << np.EMP << ',' << np.PTA << ',' << np.DEPTO << ',' << np.CLAVE << ',' << np.NOMB << ',' << fixed << setprecision(2) << np.SAL << ',' << np.F_ING << '\n';
         archReporte << mov.TRAB << " ALTA EXITOSA" << '\n';
