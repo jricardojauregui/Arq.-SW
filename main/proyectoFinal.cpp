@@ -12,7 +12,7 @@ Nom: Paola Loredo         Fech. Mod.: 99/99/99       Desc: descripcionMod
 Nom: Fabían Orta          Fech. Mod.: 99/99/99       Desc: descripcionMod 
        
 Descripción del funcionamiento del programa:
-descripcionCorta1
+Actualizar el archivo de Personal de una empresa con Movimientos de empleados.
 */
 
 #include <iostream>
