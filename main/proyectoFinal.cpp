@@ -26,12 +26,14 @@ using namespace std;
 /*
 Contenido               Propósito
 ---------------------------------------------------------------
+leerCampo()             Leer un campo de una línea
+inicio()                Inicializar archivos de entrada y salida
 leeMovimiento()         Leer datos de movimiento de un archivo        
 leePersonal()           Leer datos de personal de un archivo
+copia()                 Copiar datos de un empleado
 alta()                  Dar de alta a un empleado
 cambio()                Cambiar datos de un empleado
 baja()                  Dar de baja a un empleado
-copia()                 Copiar datos de un empleado
 movimientoPersonal()    Switch dependiendo de la opción elegida de los movimientos
 termina()               Terminar el programa
 main()                  Implementar funciones existentes
@@ -71,7 +73,7 @@ string leerCampo(istringstream &ss) {
     return f;
 }
 
-void abreArchivos() {
+void inicio() {
     finPers.open("datosExistentesPER.txt");
     finMov.open("datosExistentesMOV.txt");
     foutNewPers.open("nuevoPersonal.txt");
@@ -254,7 +256,7 @@ void termina() {
 }
 
 int main() {
-    abreArchivos();
+    inicio();
     leeMovimiento();
     leePersonal();
 
