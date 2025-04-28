@@ -158,7 +158,36 @@ void alta() {
 }
 
 
-void cambio(){}
+void cambio(){
+    if (!mov.GPO.empty()) {
+        per.GPO = mov.GPO;
+    }
+    if (!mov.EMP.empty()) {
+        per.EMP = mov.EMP;
+    }
+    if (!mov.PTA.empty()) {
+        per.PTA = mov.PTA;
+    }
+    if (!mov.DEPTO.empty()) {
+        per.DEPTO = mov.DEPTO;
+    }
+    if (mov.CLAVE != 'O') { // Asumo que 'O' es como "sin cambio"
+        per.CLAVE = mov.CLAVE;
+    }
+    if (!mov.NOMB.empty()) {
+        per.NOMB = mov.NOMB;
+    }
+    if (mov.SAL != 0.0) {
+        per.SAL = mov.SAL;
+    }
+    if (mov.F_ING != 0) {
+        per.F_ING = mov.F_ING;
+    }
+
+    foutNewPers << per.TRAB << ',' << per.GPO << ',' << per.EMP << ',' << per.PTA << ',' << per.DEPTO << ',' << per.CLAVE << ',' << per.NOMB << ',' << fixed << setprecision(2) << per.SAL << ',' << per.F_ING << '\n';
+    foutReporte << per.TRAB << " CAMBIO EXITOSO\n";
+       
+}
 
 void baja(){}
 
