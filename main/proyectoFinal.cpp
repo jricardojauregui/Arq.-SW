@@ -63,8 +63,8 @@ static Flag eofPers = false;
 static Flag eofMov  = false;
 
 // Registros en memoria
-static Personal persRec;
-static Movimiento movRec;
+static Personal per;
+static Movimiento mov;
 
 typedef istringstream ISS;
 string leerCampo(ISS &ss) {
@@ -87,52 +87,52 @@ void leePersonal(){
 
 void alta() {
     Personal np;
-    np.TRAB = movRec.TRAB;
+    np.TRAB = mov.TRAB;
 
-    if (!movRec.GPO.empty()) {
-        np.GPO = movRec.GPO;
+    if (!mov.GPO.empty()) {
+        np.GPO = mov.GPO;
     } else {
         np.GPO = "G000";
     }
 
-    if (!movRec.EMP.empty()) {
-        np.EMP = movRec.EMP;
+    if (!mov.EMP.empty()) {
+        np.EMP = mov.EMP;
     } else {
         np.EMP = "E000";
     }
 
-    if (!movRec.PTA.empty()) {
-        np.PTA = movRec.PTA;
+    if (!mov.PTA.empty()) {
+        np.PTA = mov.PTA;
     } else {
         np.PTA = "P000";
     }
 
-    if (!movRec.DEPTO.empty()) {
-        np.DEPTO = movRec.DEPTO;
+    if (!mov.DEPTO.empty()) {
+        np.DEPTO = mov.DEPTO;
     } else {
         np.DEPTO = "D000";
     }
 
-    if (movRec.CLAVE != 'O') {
-        np.CLAVE = movRec.CLAVE;
+    if (mov.CLAVE != 'O') {
+        np.CLAVE = mov.CLAVE;
     } else {
         np.CLAVE = 'O';
     }
 
-    if (!movRec.NOMB.empty()) {
-        np.NOMB = movRec.NOMB;
+    if (!mov.NOMB.empty()) {
+        np.NOMB = mov.NOMB;
     } else {
         np.NOMB = "N000";
     }
 
-    if (movRec.SAL != 0.0) {
-        np.SAL = movRec.SAL;
+    if (mov.SAL != 0.0) {
+        np.SAL = mov.SAL;
     } else {
         np.SAL = 1000.0;
     }
 
-    if (movRec.F_ING != 0) {
-        np.F_ING = movRec.F_ING;
+    if (mov.F_ING != 0) {
+        np.F_ING = mov.F_ING;
     } else {
         time_t ahora = time(0);
         tm* ltm = localtime(&ahora);
