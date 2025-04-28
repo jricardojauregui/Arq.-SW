@@ -54,13 +54,13 @@ struct Movimiento {
     int F_ING;
 };
 
-static ifstream finPers;
-static ifstream finMov;
-static ofstream foutNewPers;
-static ofstream foutReporte;
+static ifstream archPer;
+static ifstream archMov;
+static ofstream archNuevoPer;
+static ofstream archReporte;
 
-static bool eofPers = false;
-static bool eofMov  = false;
+static bool finPer = false;
+static bool finMov = false;
 
 static Personal per;
 static Movimiento mov;
@@ -74,11 +74,11 @@ string leerCampo(istringstream &ss) {
 }
 
 void inicio() {
-    finPers.open("datosExistentesPER.txt");
-    finMov.open("datosExistentesMOV.txt");
-    foutNewPers.open("nuevoPersonal.txt");
-    foutReporte.open("reporte.txt");
-    if (!finPers || !finMov) {
+    archPer.open("datosExistentesPER.txt");
+    archMov.open("datosExistentesMOV.txt");
+    archNuevoPer.open("nuevoPersonal.txt");
+    archReporte.open("reporte.txt");
+    if (!archPer || !archMov) {
         cerr << "Error al abrir archivos de entrada" << endl;
         exit(EXIT_FAILURE);
     }
@@ -86,7 +86,7 @@ void inicio() {
 
 void leeMovimiento() {
     string linea;
-    if (getline(finMov, linea)) {
+    if (getline(archMov, linea)) {
         istringstream ss(linea);
         mov.CVE = leerCampo(ss)[0];
         mov.TRAB = leerCampo(ss);
@@ -103,15 +103,15 @@ void leeMovimiento() {
         mov.NOMB = leerCampo(ss);
         mov.SAL = stod(leerCampo(ss));
         mov.F_ING = stoi(leerCampo(ss));
-        eofMov = false;
+        finMov = false;
     } else {
-        eofMov = true;
+        finMov = true;
     }
 }
 
 void leePersonal() {
     string linea;
-    if (getline(finPers, linea)) {
+    if (getline(archPer, linea)) {
         istringstream ss(linea);
         per.TRAB = leerCampo(ss);
         per.GPO = leerCampo(ss);
@@ -127,19 +127,19 @@ void leePersonal() {
         per.NOMB = leerCampo(ss);
         per.SAL = stod(leerCampo(ss));
         per.F_ING = stoi(leerCampo(ss));
-        eofPers = false;
+        finPer = false;
     } else {
-        eofPers = true;
+        finPer = true;
     }
 }
 
 void copia() {
-    foutNewPers << per.TRAB << ',' << per.GPO << ',' << per.EMP << ',' << per.PTA << ',' << per.DEPTO << ',' << per.CLAVE << ',' << per.NOMB << ',' << fixed << setprecision(2) << per.SAL << ',' << per.F_ING << '\n';
+    archNuevoPer << per.TRAB << ',' << per.GPO << ',' << per.EMP << ',' << per.PTA << ',' << per.DEPTO << ',' << per.CLAVE << ',' << per.NOMB << ',' << fixed << setprecision(2) << per.SAL << ',' << per.F_ING << '\n';
 }
 
 void alta() {
     if (existe) {
-        foutReporte << mov.TRAB << " ALTA NO EXITOSA" << '\n';
+        archReporte << mov.TRAB << " ALTA NO EXITOSA" << '\n';
         copia();
     } else {
         Personal np;
@@ -186,16 +186,16 @@ void alta() {
             tm* lt = localtime(&t);
             np.F_ING = (1900 + lt->tm_year) * 10000 + (1 + lt->tm_mon) * 100 + lt->tm_mday;
         }
-        foutNewPers << np.TRAB << ',' << np.GPO << ',' << np.EMP << ',' << np.PTA << ',' << np.DEPTO << ',' << np.CLAVE << ',' << np.NOMB << ',' << fixed << setprecision(2) << np.SAL << ',' << np.F_ING << '\n';
-        foutReporte << mov.TRAB << " ALTA EXITOSA" << '\n';
+        archNuevoPer << np.TRAB << ',' << np.GPO << ',' << np.EMP << ',' << np.PTA << ',' << np.DEPTO << ',' << np.CLAVE << ',' << np.NOMB << ',' << fixed << setprecision(2) << np.SAL << ',' << np.F_ING << '\n';
+        archReporte << mov.TRAB << " ALTA EXITOSA" << '\n';
     }
 }
 
 void baja() {
     if (existe) {
-        foutReporte << mov.TRAB << " BAJA EXITOSA" << '\n';
+        archReporte << mov.TRAB << " BAJA EXITOSA" << '\n';
     } else {
-        foutReporte << mov.TRAB << " BAJA NO EXITOSA" << '\n';
+        archReporte << mov.TRAB << " BAJA NO EXITOSA" << '\n';
     }
 }
 
@@ -225,10 +225,10 @@ void cambio() {
         if (mov.F_ING != 0) {
             per.F_ING = mov.F_ING;
         }
-        foutNewPers << per.TRAB << ',' << per.GPO << ',' << per.EMP << ',' << per.PTA << ',' << per.DEPTO << ',' << per.CLAVE << ',' << per.NOMB << ',' << fixed << setprecision(2) << per.SAL << ',' << per.F_ING << '\n';
-        foutReporte << mov.TRAB << " CAMBIO EXITOSO" << '\n';
+        archNuevoPer << per.TRAB << ',' << per.GPO << ',' << per.EMP << ',' << per.PTA << ',' << per.DEPTO << ',' << per.CLAVE << ',' << per.NOMB << ',' << fixed << setprecision(2) << per.SAL << ',' << per.F_ING << '\n';
+        archReporte << mov.TRAB << " CAMBIO EXITOSO" << '\n';
     } else {
-        foutReporte << mov.TRAB << " CAMBIO NO EXITOSO" << '\n';
+        archReporte << mov.TRAB << " CAMBIO NO EXITOSO" << '\n';
     }
 }
 
@@ -244,15 +244,15 @@ void movimientoPersonal() {
             cambio(); 
             break;
         default:
-            foutReporte << mov.TRAB << " MOVIMIENTO INVALIDO" << '\n';
+            archReporte << mov.TRAB << " MOVIMIENTO INVALIDO" << '\n';
     }
 }
 
 void termina() {
-    finPers.close();
-    finMov.close();
-    foutNewPers.close();
-    foutReporte.close();
+    archPer.close();
+    archMov.close();
+    archNuevoPer.close();
+    archReporte.close();
 }
 
 int main() {
@@ -260,8 +260,8 @@ int main() {
     leeMovimiento();
     leePersonal();
 
-    while (!eofMov || !eofPers) {
-        if (!eofMov && !eofPers) {
+    while (!finMov || !finPer) {
+        if (!finMov && !finPer) {
             if (mov.TRAB == per.TRAB) {
                 existe = true;
                 movimientoPersonal();
@@ -275,7 +275,7 @@ int main() {
                 copia();
                 leePersonal();
             }
-        } else if (!eofMov) {
+        } else if (!finMov) {
             existe = false;
             movimientoPersonal();
             leeMovimiento();
