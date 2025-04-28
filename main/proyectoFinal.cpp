@@ -134,8 +134,8 @@ void alta() {
     if (movRec.F_ING != 0) {
         np.F_ING = movRec.F_ING;
     } else {
-        time_t now = time(0);
-        tm* ltm = localtime(&now);
+        time_t ahora = time(0);
+        tm* ltm = localtime(&ahora);
 
         np.F_ING = (1900 + ltm->tm_year) * 10000 + (1 + ltm->tm_mon) * 100 + ltm->tm_mday;
     }
