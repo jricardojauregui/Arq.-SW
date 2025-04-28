@@ -239,11 +239,10 @@ void cambio(){
 
 void baja(){
        foutReporte << mov.TRAB << " BAJA EXITOSA\n";
-    // No se escribe en nuevo personal (equivale a baja)
 }
 
 void copia() {
-    foutNewPers << per.TRAB << ',' << per.GPO << ',' << per.EMP << ',' << per.PTA << ',' << per.DEPTO << ',' << per.CLAVE << ',' << per.NOMB << ',' << fixed << setprecision(4) << per.SAL << ',' << per.F_ING << '\n';
+    foutNewPers << per.TRAB << ',' << per.GPO << ',' << per.EMP << ',' << per.PTA << ',' << per.DEPTO << ',' << per.CLAVE << ',' << per.NOMB << ',' << fixed << setprecision(2) << per.SAL << ',' << per.F_ING << '\n';
 }
 
 
