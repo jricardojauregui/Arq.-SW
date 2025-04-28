@@ -73,6 +73,19 @@ string leerCampo(ISS &ss) {
     return f;
 }
 
+void abreArchivos() {
+    finPers.open("datosExistentesPER.txt");
+    finMov.open("datosExistentesMOV.txt");
+    foutNewPers.open("nuevo_personal.txt");
+    foutReporte.open("reporte.txt");
+    
+    if (!finPers || !finMov) 
+    {
+        cerr << "Error al abrir archivos de entrada" << endl;
+        exit(EXIT_FAILURE);
+    }
+}
+
 /*
 Objetivo leeMovimiento(): Leer los tipos de movimiento que se pueden realizar dado un archivo
 */
