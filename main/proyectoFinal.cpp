@@ -144,22 +144,22 @@ void alta() {
         Personal np;
         np.TRAB = mov.TRAB;
         if (mov.GPO.empty()) {
-            np.GPO = "G000";
+            np.GPO = "000";
         } else {
             np.GPO = mov.GPO;
         }
         if (mov.EMP.empty()) {
-            np.EMP = "E000";
+            np.EMP = "000";
         } else {
             np.EMP = mov.EMP;
         }
         if (mov.PTA.empty()) {
-            np.PTA = "P000";
+            np.PTA = "000";
         } else {
             np.PTA = mov.PTA;
         }
         if (mov.DEPTO.empty()) {
-            np.DEPTO = "D000";
+            np.DEPTO = "000000";
         } else {
             np.DEPTO = mov.DEPTO;
         }
@@ -169,14 +169,14 @@ void alta() {
             np.CLAVE = 'O';
         }
         if (mov.NOMB.empty()) {
-            np.NOMB = "N000";
+            np.NOMB = "         ";
         } else {
             np.NOMB = mov.NOMB;
         }
         if (mov.SAL != 0.0) {
             np.SAL = mov.SAL;
         } else {
-            np.SAL = 1000.0;
+            np.SAL = 0.00;
         }
         if (mov.F_ING != 0) {
             np.F_ING = mov.F_ING;
