@@ -18,7 +18,6 @@ Actualizar el archivo de Personal de una empresa con Movimientos de empleados y 
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <iomanip>
 #include <ctime>
 
 using namespace std;
