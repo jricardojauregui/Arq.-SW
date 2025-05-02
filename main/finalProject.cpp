@@ -1,15 +1,15 @@
 /*
 Program                   Proyecto Final - companyresa
-Class                     Arquitectura de Software
-Professor                 Dr. Felipe de Jesús Rdz.
+Course name               Arquitectura de Software
+Professor's name          Dr. Felipe de Jesús Rdz.
 Creation date             22/04/25
 Last mod. date            28/04/25
 
 Maintenance log
-Name: Santiago López       Mod. date: 04/27/25       Desc: descripcionMod 
-Name: Ricardo Jáuregui     Mod. date: 04/28/25       Desc: descripcionMod 
-Name: Paola Loredo         Mod. date: 99/99/99       Desc: descripcionMod 
-Name: Fabían Orta          Mod. date: 99/99/99       Desc: descripcionMod 
+Name: Santiago López      Mod. date: 04/27/25       Desc: modDescription 
+Name: Ricardo Jáuregui    Mod. date: 04/28/25       Desc: descripcionMod 
+Name: Paola Loredo        Mod. date: 99/99/99       Desc: descripcionMod 
+Name: Fabían Orta         Mod. date: 99/99/99       Desc: descripcionMod 
        
 Program Description:
 Update a company's Personnel file with employee transactions and generate a report of the transactions made.
@@ -30,9 +30,9 @@ start()                   Function to initialize file streams
 readMovement()            Function to read a movement from the movements file
 readPersonnel()           Function to read a personnel record from the personnel file
 copy()                    Function to copy personnel data to the new personnel file
-newRegister()             Function to handle new personnel registration
-deleteRegister()          Function to handle personnel deletion
-changeRegister()          Function to handle personnel data changes
+addEmployee()             Function to handle new personnel registration
+deleteEmployee()          Function to handle personnel deletion
+changeEmployee()          Function to handle personnel data changes
 personnelMovements()      Function to process personnel movements
 end()                     Function to close file streams
 main()                    Main function to control the flow of the program
@@ -94,11 +94,11 @@ void readMovement() {
         mov.company = readField(ss);
         mov.plant = readField(ss);
         mov.department = readField(ss);
-        string tmp = readField(ss);
-        if (tmp.empty()) {
+        string tempKey = readField(ss);
+        if (tempKey.empty()) {
             mov.key = 'O';
         } else {
-            mov.key = tmp[0];
+            mov.key = tempKey[0];
         }
         mov.name = readField(ss);
         mov.baseSalary = stod(readField(ss));
@@ -126,11 +126,11 @@ void readPersonnel() {
         per.company = readField(ss);
         per.plant = readField(ss);
         per.department = readField(ss);
-        string tmpkey = readField(ss);
-        if (tmpkey.empty()) {
+        string tempKey = readField(ss);
+        if (tempKey.empty()) {
             per.key = 'O';
         } else {
-            per.key = tmpkey[0];
+            per.key = tempKey[0];
         }
         per.name = readField(ss);
         per.baseSalary = stod(readField(ss));
@@ -145,7 +145,7 @@ void copy() {
     fileNewPer << per.worker << ',' << per.group << ',' << per.company << ',' << per.plant << ',' << per.department << ',' << per.key << ',' << per.name << ',' << fixed << setprecision(2) << per.baseSalary << ',' << per.startDate << '\n';
 }
 
-void newRegister() {
+void addEmployee() {
     if (exists) {
         fileReport << mov.worker << " UNSUCCESSFUL REGISTRATION" << '\n';
         copy();
@@ -199,7 +199,7 @@ void newRegister() {
     }
 }
 
-void deleteRegister() {
+void deleteEmployee() {
     if (exists) {
         fileReport << mov.worker << " SUCCESSFUL DELETION" << '\n';
     } else {
@@ -207,7 +207,7 @@ void deleteRegister() {
     }
 }
 
-void changeRegister() {
+void changeEmployee() {
     if (exists) {
         if (!mov.group.empty()) {
             per.group = mov.group;
@@ -243,13 +243,13 @@ void changeRegister() {
 void personnelMovements() {
     switch (mov.ky) {
         case 'A': 
-            newRegister();   
+            addEmployee();   
             break;
         case 'B': 
-            deleteRegister();   
+            deleteEmployee();   
             break;
         case 'C': 
-            changeRegister(); 
+            changeEmployee(); 
             break;
         default:
             fileReport << mov.worker << " INVALID MOVEMENT ARGUMENT" << '\n';
