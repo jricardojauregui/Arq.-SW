@@ -2,17 +2,17 @@
 Program                   Proyecto Final - companyresa
 Class                     Arquitectura de Software
 Professor                 Dr. Felipe de Jesús Rdz.
-Fecha creac.              22/04/25
-Fecha ult. mod.           28/04/25
+Creation date             22/04/25
+Last mod. date            28/04/25
 
-Bitacora. de mant.
-Nom: Santiago López       Fech. Mod.: 04/27/25       Desc: descripcionMod 
-Nom: Ricardo Jáuregui     Fech. Mod.: 04/28/25       Desc: descripcionMod 
-Nom: Paola Loredo         Fech. Mod.: 99/99/99       Desc: descripcionMod 
-Nom: Fabían Orta          Fech. Mod.: 99/99/99       Desc: descripcionMod 
+Maintenance log
+Name: Santiago López       Mod. date: 04/27/25       Desc: descripcionMod 
+Name: Ricardo Jáuregui     Mod. date: 04/28/25       Desc: descripcionMod 
+Name: Paola Loredo         Mod. date: 99/99/99       Desc: descripcionMod 
+Name: Fabían Orta          Mod. date: 99/99/99       Desc: descripcionMod 
        
-Descripción del funcionamiento del programa:
-Actualizar el archivo de Personal de una companyresa con Movimientos de companyleados y generar un reporte de los movimientos realizados.
+Program Description:
+Update a company's Personnel file with employee transactions and generate a report of the transactions made.
 */
 
 #include <iostream>
