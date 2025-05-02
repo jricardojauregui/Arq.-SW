@@ -6,10 +6,10 @@ Creation date             22/04/25
 Last mod. date            28/04/25
 
 Maintenance log
-Name: Santiago López      Mod. date: 04/27/25       Desc: modDescription 
-Name: Ricardo Jáuregui    Mod. date: 04/28/25       Desc: modDescription 
-Name: Paola Loredo        Mod. date: 99/99/99       Desc: modDescription 
-Name: Fabían Orta         Mod. date: 99/99/99       Desc: modDescription 
+Name: Santiago López      Mod. date: 04/27/25       Desc: Created main program 
+Name: Ricardo Jáuregui    Mod. date: 04/28/25       Desc: Added functions to read and write personnel records 
+Name: Paola Loredo        Mod. date: 99/99/99       Desc: Modified functions to handle movements
+Name: Fabían Orta         Mod. date: 99/99/99       Desc: Added comments and documentation 
        
 Program Description:
 Update a company's Personnel file with employee transactions and generate a report of the transactions made.
