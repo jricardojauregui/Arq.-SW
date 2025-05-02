@@ -167,6 +167,7 @@ void readMovement() {
         mov.plant = readField(ss);
         mov.department = readField(ss);
         string tempKey = readField(ss);
+        /* Check if key is empty and assign default */
         if (tempKey.empty()) {
             mov.key = 'O';
         } else {
@@ -202,6 +203,7 @@ void readPersonnel() {
         per.plant = readField(ss);
         per.department = readField(ss);
         string tempKey = readField(ss);
+        /* Check if key is empty and assign default */
         if (tempKey.empty()) {
             per.key = 'O';
         } else {
@@ -353,6 +355,7 @@ void personnelMovements() {
             changeEmployee(); 
             break;
         default:
+            /* Invalid movement type */
             fileReport << mov.worker << " INVALID MOVEMENT ARGUMENT" << '\n';
     }
 }
@@ -372,9 +375,7 @@ Purpose of main(): Initialize system, process all movements and personnel record
 */
 int main() {
     start();
-
     readMovement();
-
     readPersonnel();
 
     while (!eofMov || !eofPer) {
@@ -403,6 +404,5 @@ int main() {
     }
 
     end();
-
     return 0;
 }
