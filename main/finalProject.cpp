@@ -164,11 +164,20 @@ void start() {
 Purpose of readMovement(): Read and parse next movement record from movements file.
 */
 void readMovement() {
+    static string lastMovWorker = "";
     string line;
     if (getline(fileMov, line)) {
         istringstream ss(line);
         mov.ky = readField(ss)[0];
         mov.worker = readField(ss);
+
+        /* Abort if movements file is not sorted by 'worker' ascending */
+        if (!lastMovWorker.empty() && mov.worker < lastMovWorker) {
+            cerr << "Error - Movements file is not sorted by 'worker' in ascending form." << endl;
+            exit(EXIT_FAILURE);
+        }
+        lastMovWorker = mov.worker;
+
         mov.group = readField(ss);
         mov.company = readField(ss);
         mov.plant = readField(ss);
@@ -199,6 +208,7 @@ void readPersonnel() {
         istringstream ss(line);
         per.worker = readField(ss);
 
+        /* Abort if personnel file is not sorted by 'worker' ascending */
         if (!lastWorker.empty() && per.worker < lastWorker) {
             cerr << "Error - Personnel file is not sorted by 'worker' in ascending form." << endl;
             exit(EXIT_FAILURE);
@@ -384,6 +394,12 @@ int main() {
     start();
     readMovement();
     readPersonnel();
+
+    /* Purpose: Abort if both input files are empty */
+    if (eofMov && eofPer) {
+        cerr << "Error - Both movements and existing personnel files are empty" << endl;
+        exit(EXIT_FAILURE);
+    }
 
     while (!eofMov || !eofPer) {
         if (!eofMov && !eofPer) {
