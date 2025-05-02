@@ -6,12 +6,18 @@ Creation date             22/04/25
 Last mod. date            28/04/25
 
 Maintenance log
-Name: Santiago López      Mod. date: 04/27/25       Desc: Created main program 
-Name: Ricardo Jáuregui    Mod. date: 04/28/25       Desc: Added functions to read and write personnel records 
-Name: Paola Loredo        Mod. date: 99/99/99       Desc: Modified functions to handle movements
-Name: Fabían Orta         Mod. date: 99/99/99       Desc: Added comments and documentation 
+Name: Santiago López      Mod. date: 04/27/25       Desc: Created main structs 
+Name: Ricardo Jáuregui    Mod. date: 04/27/25       Desc: Created functions to read and write files, and process movements
+Name: Fabian Orta         Mod. date: 04/27/25       Desc: Created txt files
+Name: Paola Loredo        Mod. date: 04/27/25       Desc: Modified Personnel and Movements structs 
+Name: Santiago López      Mod. date: 04/27/25       Desc: Modified readMovement function to handle empty fields 
+Name: Paola Loredo        Mod. date: 04/27/25       Desc: Modified newEmployee and changeEmployee functions to handle empty fields
+Name: Ricardo Jáuregui    Mod. date: 04/27/25       Desc: Modified switch case in personnelMovements function to handle invalid movements 
+Name: Santiago López      Mod. date: 04/27/25       Desc: Modified readPersonnel function because of an error in an empty char
+Name: Ricardo Jáuregui    Mod. date: 04/27/25       Desc: Added comments to the code
+Name: Paola Loredo        Mod. date: 04/27/25       Desc: Finalized the program and cleaned up code
        
-Program Description:
+Program Description
 Update a company's Personnel file with employee transactions and generate a report of the transactions made.
 */
 
