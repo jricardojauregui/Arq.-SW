@@ -11,7 +11,7 @@ Name: Ricardo Jáuregui    Mod. date: 04/25/25       Desc: Created functions to 
 Name: Fabian Orta         Mod. date: 04/25/25       Desc: Created txt files
 Name: Paola Loredo        Mod. date: 04/25/25       Desc: Modified Personnel and Movements structs 
 Name: Santiago López      Mod. date: 04/26/25       Desc: Modified readMovement function to handle empty fields 
-Name: Fabian Orta         Mod. date: 04/26/25       Desc: Added missing copy function
+Name: Fabian Orta         Mod. date: 04/27/25       Desc: Added missing copy function
 Name: Paola Loredo        Mod. date: 04/27/25       Desc: Modified newEmployee and changeEmployee functions to handle empty fields
 Name: Ricardo Jáuregui    Mod. date: 04/27/25       Desc: Modified switch case in personnelMovements function to handle invalid movements 
 Name: Santiago López      Mod. date: 04/27/25       Desc: Modified readPersonnel function because of an error in an empty char
